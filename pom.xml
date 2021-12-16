@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>itrip-beans</module>
+        <module>itrip-dao</module>
+        <module>itrip-service</module>
+        <module>itrip-tools</module>
+        <module>itrip-auth</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.2</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.ckst</groupId>
+    <artifactId>itrip-project</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>itrip-project</name>
+    <description>Demo project for Spring Boot</description>
+    <!-- 意思是使用maven分模块管理，都会有一个父级项目，
+    pom文件一个重要的属性就是packaging（打包类型），
+    一般来说所有的父级项目的packaging都为pom，packaging默认类型jar类型，
+    如果不做配置，maven会将该项目打成jar包-->
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <mybatis-plus-boot-starter.version>3.3.2</mybatis-plus-boot-starter.version>
+        <springfox-swagger.version>2.9.2</springfox-swagger.version>
+        <itrip.version>0.0.1-SNAPSHOT</itrip.version>
+        <spring-boot-starter-data-redis>2.6.1</spring-boot-starter-data-redis>
+        <spring-boot-starter-mail>2.5.7</spring-boot-starter-mail>
+        <spring-boot-devtools>2.5.7</spring-boot-devtools>
+        <mysql-connector-java>8.0.19</mysql-connector-java>
+        <spring-boot-starter-web>2.4.2</spring-boot-starter-web>
+    </properties>
+
+    <!-- 管理版本,相应依赖不会被下载到maven仓库，在子项目中如果有相同的依赖，必须配置 -->
+    <dependencyManagement>
+        <dependencies>
+            <!--依赖统一管理-->
+            <dependency>
+                <groupId>com.ckst</groupId>
+                <artifactId>itrip-tools</artifactId>
+                <version>${itrip.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot-starter-web}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ckst</groupId>
+                <artifactId>itrip-beans</artifactId>
+                <version>${itrip.version}</version>
+            </dependency> <!--依赖统一管理-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot-starter-data-redis}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-mail</artifactId>
+                <version>${spring-boot-starter-mail}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <scope>runtime</scope>
+                <version>${spring-boot-devtools}</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <scope>runtime</scope>
+                <version>${mysql-connector-java}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+</project>
